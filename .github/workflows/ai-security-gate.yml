@@ -21,7 +21,7 @@ jobs:
 
       - name: Run Gemini Security Audit
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY: "AQ.Ab8RN6LBpKs_NNmc5mX8-AUB0GGz6Nu7Wmh7T5i1d6tkIyk_0A"
         run: |
           python src/guard.py
 
