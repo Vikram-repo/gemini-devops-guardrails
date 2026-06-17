@@ -1,5 +1,26 @@
-- name: Run Gemini Security Audit
-env:
-  GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-run: |
-  python src/gaurd.py
+name: AI Security Gate
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  security-audit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Run Gemini Security Audit
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python src/gaurd.py
